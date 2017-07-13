@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.paulo.agendasanpablo.VerHorarios">
+    <TextView
+        android:id="@+id/msgSpinnet"
+        android:text="Seleccion un Dia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:layout_below="@+id/msgSpinnet"
+        android:id="@+id/spinner_dias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></Spinner>
+    <Button android:id="@+id/btn_buscar_horario"
+        android:layout_below="@+id/spinner_dias"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="40dp"
+        android:textColor="@android:color/white"/>
+    <TextView
+        android:layout_below="@+id/btn_buscar_horario"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:id="@+id/msgDia"
+        android:text=""
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <ListView
+        android:layout_below="@+id/msgDia"
+        android:id="@+id/listaHorario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+</RelativeLayout>

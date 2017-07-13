@@ -41,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 ws = new wsAccess();
                 respuesta = ws.validarUsuario(usuario.getText().toString(),password.getText().toString());
                 if(respuesta.get(0).equals("0")){
-                    Snackbar.make(v, "El usuario o password es Incorrecto", Snackbar.LENGTH_LONG)
-                            .show();
+                    Snackbar.make(v, "El usuario o password es Incorrecto", Snackbar.LENGTH_LONG).show();
                 }else {
                     editor.putString("idUsuario",respuesta.get(0));
                     editor.putString("nombre",respuesta.get(1));

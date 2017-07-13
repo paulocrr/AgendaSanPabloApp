@@ -23,6 +23,7 @@ public class HomeUsuario extends AppCompatActivity implements BaseSliderView.OnS
     FloatingActionButton logout;
     FloatingActionButton calculadoraNota;
     FloatingActionButton listarProfesores;
+    FloatingActionButton verHorarios;
     SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class HomeUsuario extends AppCompatActivity implements BaseSliderView.OnS
         calculadoraNota = (FloatingActionButton) findViewById(R.id.fabNotas);
         logout =(FloatingActionButton) findViewById(R.id.fabLogout);
         listarProfesores = (FloatingActionButton) findViewById(R.id.fabCalificar);
+        verHorarios = (FloatingActionButton) findViewById(R.id.fabHorario);
         prefs = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         mDemoSlider = (SliderLayout)findViewById(R.id.slider);
         HashMap<String,String> url_maps = new HashMap<String, String>();
@@ -62,6 +64,7 @@ public class HomeUsuario extends AppCompatActivity implements BaseSliderView.OnS
         calculadoraNota.setOnClickListener(clickListener);
         logout.setOnClickListener(clickListener);
         listarProfesores.setOnClickListener(clickListener);
+        verHorarios.setOnClickListener(clickListener);
 
 
     }
@@ -84,6 +87,10 @@ public class HomeUsuario extends AppCompatActivity implements BaseSliderView.OnS
                 case R.id.fabCalificar:
                     Intent b = new Intent(HomeUsuario.this,ListadoProfesores.class);
                     startActivity(b);
+                    break;
+                case R.id.fabHorario:
+                    Intent c = new Intent(HomeUsuario.this,VerHorarios.class);
+                    startActivity(c);
                     break;
 
             }

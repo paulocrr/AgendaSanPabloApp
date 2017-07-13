@@ -11,6 +11,7 @@ import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
+import java.util.SimpleTimeZone;
 import java.util.Vector;
 
 /**
@@ -18,7 +19,7 @@ import java.util.Vector;
  */
 
 public class wsAccess {
-    String URL = "http://192.168.0.109/wsAgendaSanPablo/wsAgendaSanpablo.php";
+    String URL = "http://104.236.233.108/wsAgendaSanPablo/wsAgendaSanpablo.php";
     String NAMESPACE = "urn:wsAgendaSanPablo";
     public Vector<String> validarUsuario(String usuario, String pass){
         String SOAP_ACTION="wsAgendaSanPablo#validarUsuario";
@@ -146,5 +147,51 @@ public class wsAccess {
             e.printStackTrace();
         }
         return respuesta;
+    }
+    public String getDias(){
+        String SOAP_ACTION="wsAgendaSanPablo#getDias";
+        String METHOD = "getDias";
+        String respuesta = "0";
+        try{
+            SoapObject request = new SoapObject(NAMESPACE,METHOD);
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet=false;
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE transportSE = new HttpTransportSE(URL);
+            transportSE.call(SOAP_ACTION,envelope);
+            respuesta = envelope.getResponse().toString();
+            transportSE.getServiceConnection().disconnect();
+        } catch (HttpResponseException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  respuesta;
+    }
+    public String getHorariosDia(String idDia, String idUsuario){
+        String SOAP_ACTION="wsAgendaSanPablo#getHorarioDia";
+        String METHOD = "getHorarioDia";
+        String respuesta = "0";
+        try{
+            SoapObject request = new SoapObject(NAMESPACE,METHOD);
+            request.addProperty("idDia",idDia);
+            request.addProperty("idUsuario",idUsuario);
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+            envelope.dotNet=false;
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE transportSE = new HttpTransportSE(URL);
+            transportSE.call(SOAP_ACTION,envelope);
+            respuesta = envelope.getResponse().toString();
+            transportSE.getServiceConnection().disconnect();
+        } catch (HttpResponseException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return  respuesta;
     }
 }

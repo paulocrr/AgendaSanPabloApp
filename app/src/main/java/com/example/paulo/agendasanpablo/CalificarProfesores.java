@@ -86,10 +86,10 @@ public class CalificarProfesores extends AppCompatActivity {
                         }
 
                     }
-                    Snackbar.make(v, "Se califico al Profesor", Snackbar.LENGTH_LONG)
+                    Toast.makeText(CalificarProfesores.this, "Se califico al Profesor", Snackbar.LENGTH_LONG)
                             .show();
-                    /*Intent i = new Intent(CalificarProfesores.this,HomeUsuario.class);
-                    startActivity(i);*/
+                    Intent i = new Intent(CalificarProfesores.this,HomeUsuario.class);
+                    startActivity(i);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
