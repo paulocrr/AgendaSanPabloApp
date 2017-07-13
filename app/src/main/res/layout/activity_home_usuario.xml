@@ -62,8 +62,7 @@
         fab:menu_labels_maxLines="-1"
         fab:menu_labels_position="left"
         fab:menu_openDirection="up"
-        fab:menu_backgroundColor="@android:color/transparent"
-        fab:menu_fab_label="Cerrar">
+        fab:menu_backgroundColor="@android:color/transparent">
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fabLogout"
             android:layout_width="wrap_content"
@@ -92,14 +91,14 @@
             fab:fab_size="mini"
             fab:fab_label="Horario"/>
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fabHome"
+            android:id="@+id/fabCalificar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_home"
+            android:src="@drawable/ic_star"
             fab:fab_colorNormal="@color/colorPrimary"
             fab:fab_colorPressed="@color/colorPrimary"
             fab:fab_size="mini"
-            fab:fab_label="Inicio"/>
+            fab:fab_label="Profesores" />
     </com.github.clans.fab.FloatingActionMenu>
 
 </RelativeLayout>
