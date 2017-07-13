@@ -20,7 +20,10 @@
 
         <uses-permission android:name="android.permission.INTERNET" />
 
-        <activity android:name=".HomeUsuario"></activity>
+        <activity android:name=".HomeUsuario" />
+        <activity android:name=".CalculadoraNotas" />
+        <activity android:name=".ListadoProfesores" />
+        <activity android:name=".CalificarProfesores"></activity>
     </application>
 
 </manifest>

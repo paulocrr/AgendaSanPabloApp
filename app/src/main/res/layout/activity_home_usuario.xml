@@ -14,21 +14,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <com.daimajia.slider.library.SliderLayout
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/mensajeBienvenida"
         android:id="@+id/slider"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:gravity="center"
         />
     <TextView
+        android:id="@+id/textIntro"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/slider"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:textColor="@color/primaryText"
         android:text="En tu Agenda SanPablo podrás calcular tus notas, ver tu horario
 		y calificar a tus profesores, además muy pronto tendrás nuevas funcionalidades a tu disposición"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/menu"
         android:layout_width="wrap_content"

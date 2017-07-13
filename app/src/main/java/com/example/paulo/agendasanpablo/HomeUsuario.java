@@ -1,9 +1,11 @@
 package com.example.paulo.agendasanpablo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -11,18 +13,25 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.github.clans.fab.FloatingActionButton;
 
 import java.util.HashMap;
 
 public class HomeUsuario extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
     private SliderLayout mDemoSlider;
     TextView mensaje;
+    FloatingActionButton logout;
+    FloatingActionButton calculadoraNota;
+    FloatingActionButton listarProfesores;
     SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_usuario);
         mensaje = (TextView) findViewById(R.id.mensajeBienvenida);
+        calculadoraNota = (FloatingActionButton) findViewById(R.id.fabNotas);
+        logout =(FloatingActionButton) findViewById(R.id.fabLogout);
+        listarProfesores = (FloatingActionButton) findViewById(R.id.fabCalificar);
         prefs = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         mDemoSlider = (SliderLayout)findViewById(R.id.slider);
         HashMap<String,String> url_maps = new HashMap<String, String>();
@@ -50,9 +59,36 @@ public class HomeUsuario extends AppCompatActivity implements BaseSliderView.OnS
         mDemoSlider.addOnPageChangeListener(this);
         String nom = prefs.getString("nombre","");
         mensaje.setText("Bienvenida/o: "+ nom);
+        calculadoraNota.setOnClickListener(clickListener);
+        logout.setOnClickListener(clickListener);
+        listarProfesores.setOnClickListener(clickListener);
+
 
     }
+    private View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.fabNotas:
+                    Intent i = new Intent(HomeUsuario.this,CalculadoraNotas.class);
+                    startActivity(i);
+                    break;
+                case R.id.fabLogout:
+                    SharedPreferences prefs = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.clear();
+                    editor.commit();
+                    Intent a = new Intent(HomeUsuario.this,MainActivity.class);
+                    startActivity(a);
+                    break;
+                case R.id.fabCalificar:
+                    Intent b = new Intent(HomeUsuario.this,ListadoProfesores.class);
+                    startActivity(b);
+                    break;
 
+            }
+        }
+    };
     @Override
     public void onSliderClick(BaseSliderView slider) {
 
