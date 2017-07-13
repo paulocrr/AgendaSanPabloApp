@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("idUsuario",respuesta.get(0));
                     editor.putString("nombre",respuesta.get(1));
                     editor.putString("apellido",respuesta.get(2));
+                    editor.commit();
                     Intent i = new Intent(MainActivity.this,HomeUsuario.class);
                     startActivity(i);
                 }

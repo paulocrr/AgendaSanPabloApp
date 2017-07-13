@@ -1,7 +1,10 @@
 package com.example.paulo.agendasanpablo;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
@@ -13,10 +16,14 @@ import java.util.HashMap;
 
 public class HomeUsuario extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
     private SliderLayout mDemoSlider;
+    TextView mensaje;
+    SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_usuario);
+        mensaje = (TextView) findViewById(R.id.mensajeBienvenida);
+        prefs = getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         mDemoSlider = (SliderLayout)findViewById(R.id.slider);
         HashMap<String,String> url_maps = new HashMap<String, String>();
         url_maps.put("1", "http://liderazgo.ucsp.edu.pe/wp-content/uploads/2017/02/Banner-web.jpg");
@@ -25,14 +32,11 @@ public class HomeUsuario extends AppCompatActivity implements BaseSliderView.OnS
         url_maps.put("4", "http://ucsp.edu.pe/wp-content/uploads/2017/06/Banner-horizontal-8.jpg");
         for(String name : url_maps.keySet()){
             TextSliderView textSliderView = new TextSliderView(this);
-            // initialize a SliderLayout
             textSliderView
                     .description(name)
                     .image(url_maps.get(name))
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(this);
-
-            //add your extra information
             textSliderView.bundle(new Bundle());
             textSliderView.getBundle()
                     .putString("extra",name);
@@ -44,6 +48,9 @@ public class HomeUsuario extends AppCompatActivity implements BaseSliderView.OnS
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
         mDemoSlider.setDuration(4000);
         mDemoSlider.addOnPageChangeListener(this);
+        String nom = prefs.getString("nombre","");
+        mensaje.setText("Bienvenida/o: "+ nom);
+
     }
 
     @Override

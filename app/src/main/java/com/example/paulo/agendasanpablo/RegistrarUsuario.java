@@ -62,6 +62,7 @@ public class RegistrarUsuario extends AppCompatActivity {
                     editor.putString("idUsuario",respuesta.get(0));
                     editor.putString("nombre",nombre.getText().toString());
                     editor.putString("apellido",apellido.getText().toString());
+                    editor.commit();
                     Intent i = new Intent(RegistrarUsuario.this,HomeUsuario.class);
                     startActivity(i);
                 }
